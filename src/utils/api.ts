@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "./auth";
 
 export const api = axios.create({
-  baseURL: "http://localhost:5000",
+ baseURL: import.meta.env.VITE_API_BASE_URL || "https://hwacs-backend.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
