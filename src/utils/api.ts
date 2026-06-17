@@ -1,8 +1,11 @@
 import axios from "axios";
 import { getToken } from "./auth";
 
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://hwacs-backend.onrender.com";
+
 export const api = axios.create({
- baseURL: import.meta.env.VITE_API_BASE_URL || "https://hwacs-backend.onrender.com",
+  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -20,18 +23,4 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
-);
-
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    const status = error?.response?.status;
-    const url = error?.config?.url;
-
-    if (status === 401 || status === 403) {
-      console.error(`API ${status} error:`, url);
-    }
-
-    return Promise.reject(error);
-  }
 );

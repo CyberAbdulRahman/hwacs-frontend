@@ -51,7 +51,7 @@ import { Button } from "./ui/button";
 import { Shield } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
-
+import { API_BASE_URL } from "../utils/api";
 interface NavbarProps {
   currentPage?: string;
 }
@@ -100,8 +100,8 @@ export function Navbar({ currentPage }: NavbarProps) {
         // });
 
         // ---- OPTION B: API KEY ----
-        const res = await fetch("http://127.0.0.1:5000/api/notifications/unread-count", {
-          headers: {
+const res = await fetch(`${API_BASE_URL}/api/notifications/unread-count`, {      
+      headers: {
             "Content-Type": "application/json",
             ...(apiKey ? { "X-API-KEY": apiKey } : {}),
             ...(token ? { Authorization: `Bearer ${token}` } : {}),

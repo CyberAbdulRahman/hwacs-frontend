@@ -1,5 +1,5 @@
 // ResetPasswordPage.tsx
-import axios from "axios";
+import { api } from "../utils/api";
 import { useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Navbar } from "./Navbar";
@@ -58,7 +58,7 @@ export function ResetPasswordPage() {
 
     try {
       setIsLoading(true);
-      await axios.post("http://127.0.0.1:5000/api/auth/reset-password", {
+      await api.post("/api/auth/reset-password", {
         token,
         newPassword,
       });

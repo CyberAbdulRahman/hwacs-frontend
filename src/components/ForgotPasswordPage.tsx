@@ -8,6 +8,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Shield } from "lucide-react";
+import { api } from "../utils/api";
 
 type Msg = { type: "success" | "error"; text: string } | null;
 
@@ -27,7 +28,7 @@ export function ForgotPasswordPage() {
 
     try {
       setIsLoading(true);
-      await axios.post("http://127.0.0.1:5000/api/auth/forgot-password", { email });
+      await api.post("/api/auth/forgot-password", { email });
 
       setMessage({
         type: "success",
