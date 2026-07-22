@@ -1,5 +1,5 @@
 // SignUpPage.tsx
-import axios from "axios";
+import { api } from "../utils/api";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "./Navbar";
@@ -112,7 +112,7 @@ export function SignUpPage() {
     try {
       setIsLoading(true);
 
-      const res = await axios.post("http://127.0.0.1:5000/api/auth/register", {
+      const res = await api.post("/api/auth/register" , {
         firstName,
         lastName,
         username,

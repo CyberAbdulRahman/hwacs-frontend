@@ -1,51 +1,3 @@
-// import { Link } from "react-router-dom";
-// import { Button } from "./ui/button";
-// import { Shield } from "lucide-react";
-
-// interface NavbarProps {
-//   currentPage?: string;
-// }
-
-// export function Navbar({ currentPage }: NavbarProps) {
-//   return (
-//     <nav className="border-b-2 border-primary/20 bg-white/80 backdrop-blur-sm shadow-sm">
-//       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-//         <Link to="/" className="flex items-center gap-2">
-//           <Shield className="w-8 h-8 text-primary" />
-//           <span className="text-xl font-semibold text-foreground">HWACS</span>
-//         </Link>
-        
-//         <div className="flex items-center gap-6">
-//           <Link 
-//             to="/" 
-//             className={`transition-colors ${
-//               currentPage === 'home' 
-//                 ? 'text-primary' 
-//                 : 'text-foreground hover:text-primary'
-//             }`}
-//           >
-//             Home
-//           </Link>
-//           <Link to="/login">
-//             <Button variant="outline">Login</Button>
-//           </Link>
-//           <Link to="/signup">
-//             <Button>Sign Up</Button>
-//           </Link>
-//           <Link to="/admin-signup">
-//          <Button>Admin Sign Up</Button>
-//           </Link>
-//           <Link to="/admin-login">
-//             <Button variant="outline" className="border-cyan-600 text-cyan-700 hover:bg-cyan-50 hover:text-cyan-800">
-//               Admin
-//             </Button>
-//           </Link>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// }
-
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Shield } from "lucide-react";
@@ -94,12 +46,7 @@ export function Navbar({ currentPage }: NavbarProps) {
 
     const fetchUnreadCount = async () => {
       try {
-        // ---- OPTION A: JWT token ----
-        // const res = await fetch("http://127.0.0.1:5000/api/notifications/unread-count", {
-        //   headers: { Authorization: `Bearer ${token}` },
-        // });
-
-        // ---- OPTION B: API KEY ----
+      
 const res = await fetch(`${API_BASE_URL}/api/notifications/unread-count`, {      
       headers: {
             "Content-Type": "application/json",
