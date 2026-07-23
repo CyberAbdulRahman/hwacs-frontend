@@ -579,7 +579,7 @@ export function ExternalHoneypotRegistrationPage({
                   <Label htmlFor="websiteUrl">Website URL</Label>
                   <Input
                     id="websiteUrl"
-                    placeholder="http://localhost/dvwa/"
+                    placeholder="http://example.com/home/"
                     value={websiteUrl}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
                   />
@@ -592,7 +592,7 @@ export function ExternalHoneypotRegistrationPage({
                   <Label htmlFor="honeypotName">Honeypot Name</Label>
                   <Input
                     id="honeypotName"
-                    placeholder="DVWA (Local)"
+                    placeholder="e.g Steam , Clifter"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
