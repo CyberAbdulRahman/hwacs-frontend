@@ -56,10 +56,10 @@ export function AdminLoginPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const msg = localStorage.getItem("flashMsg");
+    const msg = sessionStorage.getItem("flashMsg");
     if (msg) {
       setInlineMsg({ type: "success", text: msg });
-      localStorage.removeItem("flashMsg");
+      sessionStorage.removeItem("flashMsg");
     }
   }, []);
 
@@ -111,9 +111,9 @@ export function AdminLoginPage() {
 
       // ✅ If your backend returns requires_otp
       if (admin?.requires_otp) {
-        localStorage.setItem("otpEmail", email);
-        localStorage.setItem("otpFlow", "admin_login");
-        localStorage.setItem("otpSource", "admin_login");
+        sessionStorage.setItem("otpEmail", email);
+        sessionStorage.setItem("otpFlow", "admin_login");
+        sessionStorage.setItem("otpSource", "admin_login");
 
         setInlineMsg({ type: "success", text: "OTP sent. Please verify." });
         setTimeout(() => navigate("/admin-otp-verification"), 600);

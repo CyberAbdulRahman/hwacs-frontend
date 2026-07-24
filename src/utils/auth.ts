@@ -13,22 +13,22 @@ const EMAIL_KEY = "email";
 const ROLE_KEY = "role";
 
 export const setAuth = (payload: { user: UserInfo; token: string }) => {
-  localStorage.setItem(TOKEN_KEY, payload.token);
-  localStorage.setItem(NAME_KEY, payload.user.name || "");
-  localStorage.setItem(EMAIL_KEY, payload.user.email || "");
-  localStorage.setItem(ROLE_KEY, payload.user.role || "user");
+  sessionStorage.setItem(TOKEN_KEY, payload.token);
+  sessionStorage.setItem(NAME_KEY, payload.user.name || "");
+  sessionStorage.setItem(EMAIL_KEY, payload.user.email || "");
+  sessionStorage.setItem(ROLE_KEY, payload.user.role || "user");
 };
 
 export const setUserInfo = (user: UserInfo) => {
-  localStorage.setItem(NAME_KEY, user.name || "");
-  localStorage.setItem(EMAIL_KEY, user.email || "");
-  localStorage.setItem(ROLE_KEY, user.role || "user");
+  sessionStorage.setItem(NAME_KEY, user.name || "");
+  sessionStorage.setItem(EMAIL_KEY, user.email || "");
+  sessionStorage.setItem(ROLE_KEY, user.role || "user");
 };
 
 export const getUserInfo = (): UserInfo | null => {
-  const name = localStorage.getItem(NAME_KEY) || "";
-  const email = localStorage.getItem(EMAIL_KEY) || "";
-  const role = (localStorage.getItem(ROLE_KEY) as Role | null) || null;
+  const name = sessionStorage.getItem(NAME_KEY) || "";
+  const email = sessionStorage.getItem(EMAIL_KEY) || "";
+  const role = (sessionStorage.getItem(ROLE_KEY) as Role | null) || null;
 
   if (!email || !role) return null;
 
@@ -40,15 +40,15 @@ export const getUserInfo = (): UserInfo | null => {
 };
 
 export const getToken = (): string => {
-  return localStorage.getItem(TOKEN_KEY) || "";
+  return sessionStorage.getItem(TOKEN_KEY) || "";
 };
 
 export const clearAuth = () => {
-  localStorage.removeItem(TOKEN_KEY);
-  localStorage.removeItem(NAME_KEY);
-  localStorage.removeItem(EMAIL_KEY);
-  localStorage.removeItem(ROLE_KEY);
-  localStorage.removeItem("honeypotApiKey");
+  sessionStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(NAME_KEY);
+  sessionStorage.removeItem(EMAIL_KEY);
+  sessionStorage.removeItem(ROLE_KEY);
+  sessionStorage.removeItem("honeypotApiKey");
 };
 
 export const isLoggedIn = (): boolean => {
@@ -56,7 +56,7 @@ export const isLoggedIn = (): boolean => {
 };
 
 export const getRole = (): Role | null => {
-  const role = localStorage.getItem(ROLE_KEY);
+  const role = sessionStorage.getItem(ROLE_KEY);
   if (role === "admin" || role === "user") return role;
   return null;
 };

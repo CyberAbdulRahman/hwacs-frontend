@@ -11,7 +11,7 @@ interface NavbarProps {
 // ✅ same logic as App.tsx (auth storage)
 function getAuth(): any | null {
   try {
-    const raw = localStorage.getItem("auth");
+    const raw = sessionStorage.getItem("auth");
     if (!raw) return null;
     return JSON.parse(raw);
   } catch {
@@ -27,8 +27,7 @@ export function Navbar({ currentPage }: NavbarProps) {
 
   // ✅ token or apiKey (use whatever you have)
   const token: string | null = auth?.token ?? null;
-  const apiKey: string | null = auth?.user?.apiKey ?? localStorage.getItem("apiKey");
-
+const apiKey: string | null = auth?.user?.apiKey ?? sessionStorage.getItem("apiKey");
   const isLoggedIn = !!role;
 
   // ✅ role based routes
@@ -85,8 +84,8 @@ const res = await fetch(`${API_BASE_URL}/api/notifications/unread-count`, {
   }, [isLoggedIn, apiKey, token, navigate, notificationsPath]);
 
   const handleLogout = () => {
-    localStorage.removeItem("auth");
-    localStorage.removeItem("apiKey");
+    sessionStorage.removeItem("auth");
+sessionStorage.removeItem("apiKey");
     toast("Logged out");
     navigate("/");
     window.location.reload(); // simple refresh to reset UI

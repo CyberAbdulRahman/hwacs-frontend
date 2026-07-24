@@ -192,9 +192,9 @@ export function AdminSignUpPage() {
       await api.post("/api/auth/admin/request-signup", payload);
 
       // ✅ important: clear any previous OTP session keys from other flows
-      localStorage.removeItem("otpEmail");
-      localStorage.removeItem("otpFlow");
-      localStorage.removeItem("otpSource");
+      sessionStorage.removeItem("otpEmail");
+      sessionStorage.removeItem("otpFlow");
+      sessionStorage.removeItem("otpSource");
 
       setInlineMsg({
         type: "success",

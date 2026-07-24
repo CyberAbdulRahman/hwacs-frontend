@@ -121,12 +121,12 @@ export function SignUpPage() {
       });
 
       // ✅ USER SIGNUP OTP FLOW KEYS (as you asked)
-      localStorage.setItem("otpEmail", email);
-      localStorage.setItem("otpFlow", "user_signup");
-      localStorage.setItem("otpSource", "user_signup");
+      sessionStorage.setItem("otpEmail", email);
+      sessionStorage.setItem("otpFlow", "user_signup");
+      sessionStorage.setItem("otpSource", "user_signup");
 
       // optional (keep if you need later)
-      localStorage.setItem(
+      sessionStorage.setItem(
         "pendingUser",
         JSON.stringify({
           name: `${firstName} ${lastName}`.trim(),

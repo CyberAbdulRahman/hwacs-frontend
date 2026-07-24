@@ -58,9 +58,9 @@
 //   const [message, setMessage] = useState<InlineMsg | null>(null);
 
 //   // ✅ These are already used in your flow
-//   const email = localStorage.getItem("otpEmail") || "";
-//   const otpFlow = localStorage.getItem("otpFlow") || "";
-//   const otpSource = localStorage.getItem("otpSource") || "";
+//   const email = sessionStorage.getItem("otpEmail") || "";
+//   const otpFlow = sessionStorage.getItem("otpFlow") || "";
+//   const otpSource = sessionStorage.getItem("otpSource") || "";
 
 //   // ✅ NEW: backend-friendly flow (purpose)
 //   // backend expects: user_login / user_signup / admin_login / admin_activation
@@ -140,19 +140,19 @@
 //       });
 
 //       // ✅ STEP 1C: ALSO save token for fetch headers in other pages
-//       localStorage.setItem("token", data.token);
-//       localStorage.setItem("role", role);
-//       localStorage.setItem("email", data.email || email);
-//       localStorage.setItem("name", data.name || "");
+//       sessionStorage.setItem("token", data.token);
+//       sessionStorage.setItem("role", role);
+//       sessionStorage.setItem("email", data.email || email);
+//       sessionStorage.setItem("name", data.name || "");
 
 //       setMessage({ type: "success", text: "OTP verified successfully! Redirecting..." });
 
 //       // clear otp session keys
-//       localStorage.removeItem("otpEmail");
-//       localStorage.removeItem("pendingUser");
-//       localStorage.removeItem("otpFlow");
-//       localStorage.removeItem("otpSource");
-//       localStorage.removeItem("flashMsg");
+//       sessionStorage.removeItem("otpEmail");
+//       sessionStorage.removeItem("pendingUser");
+//       sessionStorage.removeItem("otpFlow");
+//       sessionStorage.removeItem("otpSource");
+//       sessionStorage.removeItem("flashMsg");
 
 //       const next = decideRedirect(role);
 //       setTimeout(() => navigate(next), 650);
@@ -327,9 +327,9 @@ export function OtpVerificationPage() {
   const [message, setMessage] = useState<InlineMsg | null>(null);
 
   // ✅ These are already used in your flow
-  const email = localStorage.getItem("otpEmail") || "";
-  const otpFlow = localStorage.getItem("otpFlow") || "";
-  const otpSource = localStorage.getItem("otpSource") || "";
+  const email = sessionStorage.getItem("otpEmail") || "";
+  const otpFlow = sessionStorage.getItem("otpFlow") || "";
+  const otpSource = sessionStorage.getItem("otpSource") || "";
 
   // ✅ NEW: backend-friendly flow (purpose)
   // backend expects: user_login / user_signup / admin_login / admin_activation
@@ -409,19 +409,19 @@ export function OtpVerificationPage() {
       });
 
       // ✅ STEP 1C: ALSO save token for fetch headers in other pages
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("role", role);
-      localStorage.setItem("email", data.email || email);
-      localStorage.setItem("name", data.name || "");
+      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("role", role);
+      sessionStorage.setItem("email", data.email || email);
+      sessionStorage.setItem("name", data.name || "");
 
       setMessage({ type: "success", text: "OTP verified successfully! Redirecting..." });
 
       // clear otp session keys
-      localStorage.removeItem("otpEmail");
-      localStorage.removeItem("pendingUser");
-      localStorage.removeItem("otpFlow");
-      localStorage.removeItem("otpSource");
-      localStorage.removeItem("flashMsg");
+      sessionStorage.removeItem("otpEmail");
+      sessionStorage.removeItem("pendingUser");
+      sessionStorage.removeItem("otpFlow");
+      sessionStorage.removeItem("otpSource");
+      sessionStorage.removeItem("flashMsg");
 
       const next = decideRedirect(role);
       setTimeout(() => navigate(next), 650);

@@ -39,14 +39,14 @@ export function AdminActivatePage() {
         }
 
         // 🧹 Clear any previous OTP session (avoid user/admin mix)
-        localStorage.removeItem("otpEmail");
-        localStorage.removeItem("otpFlow");
-        localStorage.removeItem("otpSource");
+        sessionStorage.removeItem("otpEmail");
+        sessionStorage.removeItem("otpFlow");
+        sessionStorage.removeItem("otpSource");
 
         // 🔐 Set correct ADMIN OTP session
-        localStorage.setItem("otpEmail", email);
-        localStorage.setItem("otpFlow", "admin_activation");
-        localStorage.setItem("otpSource", "admin_activation");
+        sessionStorage.setItem("otpEmail", email);
+        sessionStorage.setItem("otpFlow", "admin_activation");
+        sessionStorage.setItem("otpSource", "admin_activation");
 
         if (!cancelled) {
           setMsg("✅ Account activated. OTP sent to your email...");

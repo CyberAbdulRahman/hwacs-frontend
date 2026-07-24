@@ -66,9 +66,9 @@ export function LoginPage() {
       const data = res.data;
 
       if (data?.requires_otp) {
-        localStorage.setItem("otpEmail", data.email || email);
-        localStorage.setItem("otpFlow", "user_login");
-        localStorage.setItem("otpSource", "user_login");
+        sessionStorage.setItem("otpEmail", data.email || email);
+        sessionStorage.setItem("otpFlow", "user_login");
+        sessionStorage.setItem("otpSource", "user_login");
 
         setMessage({
           type: "success",

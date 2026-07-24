@@ -40,8 +40,8 @@ export function AdminOtpVerificationPage() {
   const [isResending, setIsResending] = useState(false);
   const [message, setMessage] = useState<InlineMsg | null>(null);
 
-  const email = localStorage.getItem("otpEmail");
-  const otpFlow = localStorage.getItem("otpFlow") || ""; // admin_login / admin_signup
+  const email = sessionStorage.getItem("otpEmail");
+  const otpFlow = sessionStorage.getItem("otpFlow") || ""; // admin_login / admin_signup
 
   // ✅ If someone comes here with user flow, push to user OTP page
   useEffect(() => {
@@ -51,11 +51,11 @@ export function AdminOtpVerificationPage() {
   }, [otpFlow, navigate]);
 
   const cleanup = () => {
-    localStorage.removeItem("otpEmail");
-    localStorage.removeItem("otpFlow");
-    localStorage.removeItem("otpSource");
-    localStorage.removeItem("pendingUser");
-    localStorage.removeItem("flashMsg");
+    sessionStorage.removeItem("otpEmail");
+    sessionStorage.removeItem("otpFlow");
+    sessionStorage.removeItem("otpSource");
+    sessionStorage.removeItem("pendingUser");
+    sessionStorage.removeItem("flashMsg");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,7 +103,7 @@ export function AdminOtpVerificationPage() {
 
       // ✅ Admin signup -> verified, go admin login
       cleanup();
-      localStorage.setItem("flashMsg", "Admin verified successfully. Please login.");
+      sessionStorage.setItem("flashMsg", "Admin verified successfully. Please login.");
       setMessage({ type: "success", text: "Admin verified! Redirecting to Admin Login..." });
       setTimeout(() => navigate("/admin-login"), 750);
     } catch (error: any) {
