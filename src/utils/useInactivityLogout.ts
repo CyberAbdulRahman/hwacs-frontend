@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { clearAuth } from "./auth";
 import { toast } from "sonner";
 
-const INACTIVITY_LIMIT = 10 * 1000; // testing
-// const INACTIVITY_LIMIT = 5 * 60 * 1000; // final
+//const INACTIVITY_LIMIT = 10 * 1000; // testing
+ const INACTIVITY_LIMIT = 5 * 60 * 1000; // final
 
 export function useInactivityLogout() {
   useEffect(() => {
