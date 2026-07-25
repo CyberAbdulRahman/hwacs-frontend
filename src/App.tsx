@@ -124,12 +124,11 @@ import { ForgotPasswordPage } from "./components/ForgotPasswordPage";
 import { ResetPasswordPage } from "./components/ResetPasswordPage";
 
 import { OtpVerificationPage } from "./components/OtpVerificationPage";
-
 import { AdminLoginPage } from "./components/AdminLoginPage";
 import { AdminSignUpPage } from "./components/AdminSignUpPage";
 import { AdminActivatePage } from "./components/AdminActivatePage";
 import { AdminOtpVerificationPage } from "./components/AdminOtpVerificationPage";
-
+import { useInactivityLogout } from "./utils/useInactivityLogout";
 import { DashboardOverview } from "./components/DashboardOverview";
 import { VulnerabilitiesPage } from "./components/VulnerabilitiesPage";
 import { LogFilesPage } from "./components/LogFilesPage";
@@ -143,9 +142,10 @@ import { HoneypotManagementPage } from "./components/HoneypotManagementPage";
 
 import { Toaster } from "./components/ui/sonner";
 
+
 // ✅ Simple role detector from localStorage (based on your setAuth usage)
 function getRole(): "admin" | "user" | null {
-  const role = localStorage.getItem("role");
+  const role = sessionStorage.getItem("role");
   if (role === "admin" || role === "user") return role;
   return null;
 }
@@ -160,10 +160,11 @@ function DashboardRedirect() {
 }
 
 export default function App() {
+  useInactivityLogout();
   return (
+    
     <Router>
-      <Toaster position="top-right" />
-
+<Toaster position="top-right" richColors />
       <Routes>
         {/* =======================
             Public Routes
