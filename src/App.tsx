@@ -139,6 +139,7 @@ import { ProfilePage } from "./components/ProfilePage";
 import { AdminProfilePage } from "./components/AdminProfilePage";
 import { ExternalHoneypotRegistrationPage } from "./components/ExternalHoneypotRegistrationPage";
 import { HoneypotManagementPage } from "./components/HoneypotManagementPage";
+import { useAccountStatusWatcher } from "./utils/useAccountStatusWatcher";
 
 import { Toaster } from "./components/ui/sonner";
 
@@ -160,6 +161,7 @@ function DashboardRedirect() {
 }
 
 export default function App() {
+  useAccountStatusWatcher();
   useInactivityLogout();
   return (
     
