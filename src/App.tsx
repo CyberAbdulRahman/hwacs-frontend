@@ -122,7 +122,9 @@ import { SignUpPage } from "./components/SignUpPage";
 import { LoginPage } from "./components/LoginPage";
 import { ForgotPasswordPage } from "./components/ForgotPasswordPage";
 import { ResetPasswordPage } from "./components/ResetPasswordPage";
-
+import { useEffect } from "react";
+import { toast } from "sonner";
+import { clearAuth } from "./utils/auth";
 import { OtpVerificationPage } from "./components/OtpVerificationPage";
 import { AdminLoginPage } from "./components/AdminLoginPage";
 import { AdminSignUpPage } from "./components/AdminSignUpPage";
@@ -163,6 +165,30 @@ function DashboardRedirect() {
 export default function App() {
   useAccountStatusWatcher();
   useInactivityLogout();
+  useEffect(() => {
+  const handleAccountDisabled = (event: any) => {
+    const message =
+      event?.detail?.message ||
+      "Your account access has been disabled by admin.";
+
+    toast.error("Account access disabled", {
+      description: message,
+      duration: 2500,
+    });
+
+    setTimeout(() => {
+      clearAuth();
+      sessionStorage.clear();
+      window.location.href = "/#/login";
+    }, 2200);
+  };
+
+  window.addEventListener("hwacs-account-disabled", handleAccountDisabled);
+
+  return () => {
+    window.removeEventListener("hwacs-account-disabled", handleAccountDisabled);
+  };
+}, []);
   return (
     
     <Router>
