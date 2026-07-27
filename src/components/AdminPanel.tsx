@@ -564,15 +564,15 @@ END OF REPORT
     {isBlocked ? "Blocked" : isSuspended ? "Suspended" : "Active"}
   </Badge>
 
-  <Badge
+ <div
   className={
     user.is_online
-      ? "h-6 w-full justify-center rounded-md bg-green-500 text-[10px] font-semibold text-white hover:bg-green-600"
-      : "h-6 w-full justify-center rounded-md bg-slate-400 text-[10px] font-semibold text-white hover:bg-slate-500"
+      ? "flex h-6 w-full items-center justify-center rounded-md bg-green-500 text-[10px] font-semibold text-white"
+      : "flex h-6 w-full items-center justify-center rounded-md bg-slate-500 text-[10px] font-semibold text-white"
   }
 >
   {user.is_online ? "Online" : "Offline"}
-</Badge>
+</div>
 
   {isSuspended ? (
     <Button
