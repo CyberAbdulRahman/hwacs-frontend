@@ -34,6 +34,22 @@ type AdminUser = {
   created_at?: string;
 };
 
+const formatPakistanTime = (dateValue?: string | null) => {
+  if (!dateValue) return "";
+
+  const fixedDate = dateValue.endsWith("Z")
+    ? dateValue
+    : dateValue + "Z";
+
+  return new Date(fixedDate).toLocaleTimeString("en-PK", {
+    timeZone: "Asia/Karachi",
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+};
+
 type AdminHoneypot = {
   _id: string;
   name: string;
@@ -596,7 +612,7 @@ END OF REPORT
         </p>
       ) : (
         <p className="rounded-md bg-orange-50 px-2 py-1 text-center text-[10px] font-medium leading-tight text-orange-600">
-          Until {new Date(user.suspended_until as string).toLocaleTimeString()}
+          Until {formatPakistanTime(user.suspended_until)}
         </p>
       )}
     </div>
