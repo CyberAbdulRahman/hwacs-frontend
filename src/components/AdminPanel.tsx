@@ -32,6 +32,8 @@ type AdminUser = {
   honeypots: number;
   website?: string;
   created_at?: string;
+  is_online?: boolean;
+  last_seen?: string | null;
 };
 
 const formatPakistanTime = (dateValue?: string | null) => {
@@ -125,6 +127,8 @@ export function AdminPanel() {
             status: user.status || "Active",
             account_status: user.account_status || "active",
             suspended_until: user.suspended_until || null,
+            is_online: Boolean(user.is_online),
+            last_seen: user.last_seen || null,
             honeypots: Number(user.honeypots || 0),
             website: user.website || "No website registered",
             created_at: user.created_at,
@@ -559,6 +563,16 @@ END OF REPORT
   >
     {isBlocked ? "Blocked" : isSuspended ? "Suspended" : "Active"}
   </Badge>
+
+  <Badge
+  className={
+    user.is_online
+      ? "h-6 w-full justify-center rounded-md bg-green-500 text-[10px] font-semibold text-white hover:bg-green-600"
+      : "h-6 w-full justify-center rounded-md bg-slate-400 text-[10px] font-semibold text-white hover:bg-slate-500"
+  }
+>
+  {user.is_online ? "Online" : "Offline"}
+</Badge>
 
   {isSuspended ? (
     <Button
