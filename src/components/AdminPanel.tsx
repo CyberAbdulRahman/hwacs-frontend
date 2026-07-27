@@ -552,17 +552,25 @@ END OF REPORT
 
                       {/* RIGHT SIDE */}
 <div className="flex w-[155px] shrink-0 flex-col justify-center gap-2 border-l border-primary/20 bg-slate-50 px-3 py-3">
-  <Badge
-    className={
-      isBlocked
-        ? "h-7 w-full justify-center rounded-md bg-red-600 text-[11px] font-semibold text-white hover:bg-red-700"
-        : isSuspended
-        ? "h-7 w-full justify-center rounded-md bg-orange-500 text-[11px] font-semibold text-white hover:bg-orange-600"
-        : "h-7 w-full justify-center rounded-md bg-primary text-[11px] font-semibold text-white hover:bg-primary/90"
-    }
-  >
-    {isBlocked ? "Blocked" : isSuspended ? "Suspended" : "Active"}
-  </Badge>
+  <div
+  className={
+    isBlocked
+      ? "flex h-7 w-full items-center justify-center rounded-md bg-red-600 text-[11px] font-semibold text-white"
+      : isSuspended
+      ? "flex h-7 w-full items-center justify-center rounded-md bg-orange-500 text-[11px] font-semibold text-white"
+      : user.is_online
+      ? "flex h-7 w-full items-center justify-center rounded-md bg-green-500 text-[11px] font-semibold text-white"
+      : "flex h-7 w-full items-center justify-center rounded-md bg-slate-500 text-[11px] font-semibold text-white"
+  }
+>
+  {isBlocked
+    ? "Blocked"
+    : isSuspended
+    ? "Suspended"
+    : user.is_online
+    ? "Online"
+    : "Offline"}
+</div>
 
  <div
   className={

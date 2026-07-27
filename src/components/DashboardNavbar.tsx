@@ -19,6 +19,7 @@ import {
   Globe,
 } from "lucide-react";
 
+import { api } from "../utils/api";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { ScrollArea } from "./ui/scroll-area";
@@ -107,9 +108,15 @@ export function DashboardNavbar({
 
   const finalMarkAllRead = onMarkAllRead ?? markAllRead;
 
-  const handleLogout = () => {
-    navigate("/login");
-  };
+  const handleLogout = async () => {
+  try {
+    await api.post("/api/auth/logout");
+  } catch {}
+
+  sessionStorage.clear();
+  localStorage.clear();
+  window.location.href = "/#/login";
+};
 
   const profilePath = userRole === "admin" ? "/admin-profile" : "/profile";
   const dashboardPath =
