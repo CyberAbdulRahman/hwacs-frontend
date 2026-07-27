@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { clearAuth } from "./auth";
 import { toast } from "sonner";
+import { api } from "./api";
 
-//const INACTIVITY_LIMIT = 10 * 1000; // testing
- const INACTIVITY_LIMIT = 5 * 60 * 1000; // final
+// const INACTIVITY_LIMIT = 10 * 1000; // testing
+const INACTIVITY_LIMIT = 10 * 60 * 1000; // final
 
 export function useInactivityLogout() {
   useEffect(() => {
@@ -36,9 +37,16 @@ export function useInactivityLogout() {
         duration: 2000,
       });
 
-      setTimeout(() => {
+      setTimeout(async () => {
+        try {
+          await api.post("/api/auth/logout");
+        } catch {
+          // ignore logout API error
+        }
+
         clearAuth();
         sessionStorage.clear();
+        localStorage.clear();
 
         if (role === "admin") {
           window.location.href = "/#/admin-login";

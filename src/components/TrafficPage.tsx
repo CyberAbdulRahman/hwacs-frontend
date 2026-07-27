@@ -381,7 +381,7 @@ export function TrafficPage({ userRole }: TrafficPageProps) {
   <Card className="p-6 bg-card/80 backdrop-blur border-primary/20 min-h-[175px] flex flex-col justify-between overflow-hidden">
     <div>
       <div className="flex items-center justify-between mb-5">
-        <span className="text-sm text-muted-foreground">Attacks Blocked</span>
+        <span className="text-sm text-muted-foreground">Attacks Capture</span>
         <ShieldAlert className="w-4 h-4 text-red-500 shrink-0" />
       </div>
 

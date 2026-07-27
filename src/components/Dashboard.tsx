@@ -832,7 +832,7 @@ export function Dashboard() {
                   <p className="text-2xl font-semibold text-primary">2,856</p>
                 </div>
                 <div className="text-center p-3 bg-muted/30 rounded-lg">
-                  <p className="text-xs text-muted-foreground">Attacks Blocked</p>
+                  <p className="text-xs text-muted-foreground">Attacks Capture</p>
                   <p className="text-2xl font-semibold text-destructive">598</p>
                 </div>
                 <div className="text-center p-3 bg-muted/30 rounded-lg">

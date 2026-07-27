@@ -438,7 +438,7 @@ export function DashboardOverview({ userRole }: DashboardOverviewProps) {
 
                   <Card className="p-6 bg-card/80 backdrop-blur">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-muted-foreground">Attacks Blocked</span>
+                      <span className="text-sm text-muted-foreground">Attacks Capture</span>
                       <Activity className="w-4 h-4 text-green-600" />
                     </div>
                     <div className="text-3xl font-semibold text-green-600">
@@ -460,7 +460,7 @@ export function DashboardOverview({ userRole }: DashboardOverviewProps) {
 
                   <Card className="p-6 bg-card/80 backdrop-blur">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-muted-foreground">Attacks Blocked</span>
+                      <span className="text-sm text-muted-foreground">Attacks Capture</span>
                       <Activity className="w-4 h-4 text-destructive" />
                     </div>
                     <div className="text-3xl font-semibold text-destructive">
