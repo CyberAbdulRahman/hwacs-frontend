@@ -572,15 +572,7 @@ END OF REPORT
     : "Offline"}
 </div>
 
- <div
-  className={
-    user.is_online
-      ? "flex h-6 w-full items-center justify-center rounded-md bg-green-500 text-[10px] font-semibold text-white"
-      : "flex h-6 w-full items-center justify-center rounded-md bg-slate-500 text-[10px] font-semibold text-white"
-  }
->
-  {user.is_online ? "Online" : "Offline"}
-</div>
+
 
   {isSuspended ? (
     <Button
