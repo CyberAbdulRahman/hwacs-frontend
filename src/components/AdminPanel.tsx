@@ -558,7 +558,7 @@ END OF REPORT
                       </div>
 
                       {/* RIGHT SIDE */}
-<div className="flex w-[155px] shrink-0 flex-col justify-center gap-2 border-l border-primary/20 bg-slate-50 px-3 py-3">
+{/* <div className="flex w-[155px] shrink-0 flex-col justify-center gap-2 border-l border-primary/20 bg-slate-50 px-3 py-3">
   <div
   className={
     isBlocked
@@ -580,6 +580,87 @@ END OF REPORT
 </div>
 
 
+
+  {isSuspended ? (
+    <Button
+      size="sm"
+      variant="outline"
+      onClick={() => unsuspendUser(user._id)}
+      disabled={isLoading}
+      className="h-7 w-full rounded-md border-green-300 bg-white px-2 text-[11px] font-semibold text-green-600 hover:bg-green-50 disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      {isLoading ? "..." : "Unsuspend"}
+    </Button>
+  ) : (
+    <Button
+      size="sm"
+      variant="outline"
+      onClick={() => suspendUser(user._id)}
+      disabled={isBlocked || isLoading}
+      className="h-7 w-full rounded-md border-orange-300 bg-white px-2 text-[11px] font-semibold text-orange-600 hover:bg-orange-50 disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      {isLoading ? "..." : "Suspend"}
+    </Button>
+  )}
+
+  {isBlocked ? (
+    <Button
+      size="sm"
+      variant="outline"
+      onClick={() => unblockUser(user._id)}
+      disabled={isLoading}
+      className="h-7 w-full rounded-md border-green-300 bg-white px-2 text-[11px] font-semibold text-green-600 hover:bg-green-50 disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      {isLoading ? "..." : "Unblock"}
+    </Button>
+  ) : (
+    <Button
+      size="sm"
+      variant="destructive"
+      onClick={() => blockUser(user._id)}
+      disabled={isLoading}
+      className="h-7 w-full rounded-md px-2 text-[11px] font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      {isLoading ? "..." : "Block"}
+    </Button>
+  )}
+
+  {(actionMsg || (isSuspended && user.suspended_until)) && (
+    <div className="mt-1">
+      {actionMsg ? (
+        <p className="rounded-md bg-green-50 px-2 py-1 text-center text-[10px] font-medium leading-tight text-green-700">
+          ✓ {actionMsg}
+        </p>
+      ) : (
+        <p className="rounded-md bg-orange-50 px-2 py-1 text-center text-[10px] font-medium leading-tight text-orange-600">
+          Until {formatPakistanTime(user.suspended_until)}
+        </p>
+      )}
+    </div>
+  )}
+</div> */}
+
+{/* RIGHT SIDE */}
+<div className="flex w-[155px] shrink-0 flex-col justify-center gap-2 border-l border-primary/20 bg-slate-50 px-3 py-3">
+  <div
+    className={
+      isBlocked
+        ? "flex h-7 w-full items-center justify-center rounded-md bg-red-600 text-[11px] font-semibold text-white"
+        : isSuspended
+        ? "flex h-7 w-full items-center justify-center rounded-md bg-orange-500 text-[11px] font-semibold text-white"
+        : user.is_online
+        ? "flex h-7 w-full items-center justify-center rounded-md bg-green-500 text-[11px] font-semibold text-white"
+        : "flex h-7 w-full items-center justify-center rounded-md bg-primary text-[11px] font-semibold text-white"
+    }
+  >
+    {isBlocked
+      ? "Blocked"
+      : isSuspended
+      ? "Suspended"
+      : user.is_online
+      ? "Online"
+      : "Offline"}
+  </div>
 
   {isSuspended ? (
     <Button
