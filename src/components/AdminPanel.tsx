@@ -297,11 +297,18 @@ const deleteHoneypot = async (siteId: string, siteName: string) => {
     }
   };
 
-  useEffect(() => {
+ useEffect(() => {
+  loadUsers();
+  loadHoneypots();
+  loadAttacks();
+
+  const usersInterval = setInterval(() => {
     loadUsers();
-    loadHoneypots();
-    loadAttacks();
-  }, []);
+  }, 5000);
+
+  return () => clearInterval(usersInterval);
+}, []);
+
 
   const activeHoneypots = useMemo(() => {
   return honeypots.filter((hp) => hp.trapEnabled !== false).length;
@@ -560,7 +567,7 @@ END OF REPORT
       ? "flex h-7 w-full items-center justify-center rounded-md bg-orange-500 text-[11px] font-semibold text-white"
       : user.is_online
       ? "flex h-7 w-full items-center justify-center rounded-md bg-green-500 text-[11px] font-semibold text-white"
-      : "flex h-7 w-full items-center justify-center rounded-md bg-slate-500 text-[11px] font-semibold text-white"
+      : "flex h-7 w-full items-center justify-center rounded-md bg-primary text-[11px] font-semibold text-white"
   }
 >
   {isBlocked

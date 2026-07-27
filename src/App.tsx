@@ -139,6 +139,7 @@ import { NotificationsPage } from "./components/NotificationsPage";
 import { AdminPanelPage } from "./components/AdminPanelPage";
 import { ProfilePage } from "./components/ProfilePage";
 import { AdminProfilePage } from "./components/AdminProfilePage";
+import { useHeartbeat } from "./utils/useheartbeat";
 import { ExternalHoneypotRegistrationPage } from "./components/ExternalHoneypotRegistrationPage";
 import { HoneypotManagementPage } from "./components/HoneypotManagementPage";
 import { useAccountStatusWatcher } from "./utils/useAccountStatusWatcher";
@@ -165,6 +166,7 @@ function DashboardRedirect() {
 export default function App() {
   useAccountStatusWatcher();
   useInactivityLogout();
+  useHeartbeat();
   useEffect(() => {
   const handleAccountDisabled = (event: any) => {
     const message =
