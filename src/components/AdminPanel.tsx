@@ -112,9 +112,9 @@ export function AdminPanel() {
     }));
   };
 
-  const loadUsers = async () => {
-    try {
-      setLoadingUsers(true);
+  const loadUsers = async (silent = false) => {
+  try {
+    if (!silent) setLoadingUsers(true);
 
       const res = await api.get("/api/admin/users");
 
@@ -303,7 +303,7 @@ const deleteHoneypot = async (siteId: string, siteName: string) => {
   loadAttacks();
 
   const usersInterval = setInterval(() => {
-    loadUsers();
+    loadUsers(true);
   }, 5000);
 
   return () => clearInterval(usersInterval);
